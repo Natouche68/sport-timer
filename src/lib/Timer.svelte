@@ -61,7 +61,7 @@
 			stroke-dasharray="804"
 			stroke-dashoffset={(1 - time / maxTime) * 804}
 			stroke-linecap="round"
-			class="origin-center -rotate-90"
+			class="origin-center -rotate-90 text-primary"
 		/>
 	</svg>
 	<div
