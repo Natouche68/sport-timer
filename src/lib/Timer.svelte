@@ -6,9 +6,11 @@
 	import Pause from "lucide-svelte/icons/pause";
 
 	let time: number = 0;
+	let maxTime: number = 0;
 
 	onMount(() => {
 		time = $workoutConfig[$currentData.currentlyDoing].time;
+		maxTime = $workoutConfig[$currentData.currentlyDoing].time;
 
 		const interval = setInterval(() => {
 			if ($currentData.playing) {
@@ -21,6 +23,7 @@
 						$currentData.playing = false;
 					}
 					time = $workoutConfig[$currentData.currentlyDoing].time;
+					maxTime = $workoutConfig[$currentData.currentlyDoing].time;
 				}
 			}
 		}, 10);
@@ -35,6 +38,7 @@
 			$currentData.playing = false;
 			$currentData.currentlyDoing = 0;
 			time = $workoutConfig[$currentData.currentlyDoing].time;
+			maxTime = $workoutConfig[$currentData.currentlyDoing].time;
 		}
 	}
 
@@ -54,6 +58,10 @@
 			fill="none"
 			stroke="currentColor"
 			stroke-width="5"
+			stroke-dasharray="804"
+			stroke-dashoffset={(1 - time / maxTime) * 804}
+			stroke-linecap="round"
+			class="origin-center -rotate-90"
 		/>
 	</svg>
 	<div
