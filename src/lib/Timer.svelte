@@ -29,7 +29,13 @@
 	});
 
 	function startOrPause() {
-		$currentData.playing = !$currentData.playing;
+		if (!$currentData.playing) {
+			$currentData.playing = true;
+		} else {
+			$currentData.playing = false;
+			$currentData.currentlyDoing = 0;
+			time = $workoutConfig[$currentData.currentlyDoing].time;
+		}
 	}
 
 	function formatTime(time: number): string {
