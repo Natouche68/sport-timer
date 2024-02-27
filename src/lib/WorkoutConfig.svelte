@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { currentData, workoutConfig } from "$lib/stores";
+	import EditExercise from "$lib/EditExercise.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import * as Card from "$lib/components/ui/card";
 	import * as Table from "$lib/components/ui/table";
+	import * as Drawer from "$lib/components/ui/drawer";
 	import Dumbbell from "lucide-svelte/icons/dumbbell";
 	import Pencil from "lucide-svelte/icons/pencil";
 	import PauseCircle from "lucide-svelte/icons/pause-circle";
@@ -45,9 +47,14 @@
 									{/if}
 								</Button>
 							{:else}
-								<Button variant="outline" size="icon">
-									<Pencil class="w-4 h-4" />
-								</Button>
+								<Drawer.Root>
+									<Drawer.Trigger>
+										<Button variant="outline" size="icon">
+											<Pencil class="w-4 h-4" />
+										</Button>
+									</Drawer.Trigger>
+									<EditExercise exerciseIndex={i} />
+								</Drawer.Root>
 							{/if}
 						</Table.Cell>
 					</Table.Row>
