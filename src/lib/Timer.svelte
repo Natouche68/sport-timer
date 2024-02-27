@@ -69,7 +69,7 @@
 	>
 		<div class="text-6xl md:text-8xl font-semibold">{formatTime(time)}</div>
 		<Button
-			variant="outline"
+			variant="secondary"
 			size="icon"
 			class="w-20 h-20 md:w-24 md:h-24"
 			on:click={startOrPause}
