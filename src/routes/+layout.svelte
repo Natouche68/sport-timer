@@ -1,5 +1,11 @@
-<script>import "../app.pcss";</script><svelte:head>
+<script lang="ts">
+	import "../app.pcss";
+	import { ModeWatcher } from "mode-watcher";
+</script>
+
+<svelte:head>
 	<title>Sport Timer</title>
 </svelte:head>
 
-<slot></slot>
+<ModeWatcher />
+<slot />

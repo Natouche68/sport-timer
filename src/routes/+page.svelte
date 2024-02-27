@@ -1,1 +1,35 @@
-<h1>Sport Timer</h1>
+<script lang="ts">
+	import { Separator } from "$lib/components/ui/separator";
+	import { Button } from "$lib/components/ui/button";
+	import Play from "lucide-svelte/icons/play";
+</script>
+
+<header
+	class="fixed top-0 left-0 right-0 flex flex-col justify-center items-center"
+>
+	<h1 class="my-3 text-2xl font-bold">Sport Timer</h1>
+	<Separator />
+</header>
+
+<main class="h-dvh flex flex-col md:flex-row justify-around items-center">
+	<div class="w-3/4 md:w-1/3 relative">
+		<svg viewBox="0 0 256 256" class="overflow-visible">
+			<circle
+				cx="128"
+				cy="128"
+				r="128"
+				fill="none"
+				stroke="#fff"
+				stroke-width="5"
+			/>
+		</svg>
+		<div
+			class="absolute inset-16 md:inset-24 flex flex-col justify-center items-center gap-6"
+		>
+			<div class="text-6xl md:text-8xl font-semibold">00:00</div>
+			<Button variant="outline" size="icon" class="w-24 h-24">
+				<Play class="w-16 h-16" fill="currentColor" />
+			</Button>
+		</div>
+	</div>
+</main>
