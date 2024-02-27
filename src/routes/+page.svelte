@@ -19,16 +19,16 @@
 				cy="128"
 				r="128"
 				fill="none"
-				stroke="#fff"
+				stroke="currentColor"
 				stroke-width="5"
 			/>
 		</svg>
 		<div
 			class="absolute inset-16 md:inset-24 flex flex-col justify-center items-center gap-6"
 		>
-			<div class="text-6xl md:text-8xl font-semibold">00:00</div>
-			<Button variant="outline" size="icon" class="w-24 h-24">
-				<Play class="w-16 h-16" fill="currentColor" />
+			<div class="text-6xl md:text-8xl font-semibold">00:00,00</div>
+			<Button variant="outline" size="icon" class="w-20 h-20 md:w-24 md:h-24">
+				<Play class="w-12 h-12 md:w-16 md:h-16" fill="currentColor" />
 			</Button>
 		</div>
 	</div>
