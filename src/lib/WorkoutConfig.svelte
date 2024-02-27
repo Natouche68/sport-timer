@@ -19,7 +19,11 @@
 		<Table.Root>
 			<Table.Body>
 				{#each $workoutConfig as exercise, i}
-					<Table.Row>
+					<Table.Row
+						class={$currentData.currentlyDoing === i && $currentData.playing
+							? "text-green-600"
+							: ""}
+					>
 						<Table.Cell>
 							{#if exercise.type === "exercise"}
 								<Dumbbell />
@@ -32,8 +36,8 @@
 						<Table.Cell class="text-right">
 							{#if $currentData.playing}
 								<Button disabled variant="ghost" size="icon">
-									{#if $currentData.currentlyDoing == i}
-										<Play class="text-green-600" fill="currentColor" />
+									{#if $currentData.currentlyDoing === i}
+										<Play fill="currentColor" />
 									{:else if $currentData.currentlyDoing > i}
 										<Check />
 									{:else if $currentData.currentlyDoing < i}
