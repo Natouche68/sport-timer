@@ -33,7 +33,7 @@
 							{#if $currentData.playing}
 								<Button disabled variant="ghost" size="icon">
 									{#if $currentData.currentlyDoing == i}
-										<Play />
+										<Play class="text-green-600" fill="currentColor" />
 									{:else if $currentData.currentlyDoing > i}
 										<Check />
 									{:else if $currentData.currentlyDoing < i}
