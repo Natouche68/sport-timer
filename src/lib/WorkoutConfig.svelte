@@ -28,10 +28,10 @@
 				</Table.Row>
 				<Table.Row>
 					<Table.Cell>
-						<Dumbbell />
+						<PauseCircle />
 					</Table.Cell>
-					<Table.Cell class="font-medium">Pompes</Table.Cell>
-					<Table.Cell>15s</Table.Cell>
+					<Table.Cell class="font-medium">Pause</Table.Cell>
+					<Table.Cell>30s</Table.Cell>
 					<Table.Cell class="text-right">
 						<Button variant="outline" size="icon">
 							<Pencil class="w-4 h-4" />
@@ -40,10 +40,10 @@
 				</Table.Row>
 				<Table.Row>
 					<Table.Cell>
-						<PauseCircle />
+						<Dumbbell />
 					</Table.Cell>
-					<Table.Cell class="font-medium">Pause</Table.Cell>
-					<Table.Cell>30s</Table.Cell>
+					<Table.Cell class="font-medium">Pompes</Table.Cell>
+					<Table.Cell>15s</Table.Cell>
 					<Table.Cell class="text-right">
 						<Button variant="outline" size="icon">
 							<Pencil class="w-4 h-4" />
