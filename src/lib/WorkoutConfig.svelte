@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { currentData, workoutConfig } from "$lib/stores";
 	import { Button } from "$lib/components/ui/button";
 	import * as Card from "$lib/components/ui/card";
 	import * as Table from "$lib/components/ui/table";
@@ -14,42 +15,26 @@
 	<Card.Content>
 		<Table.Root>
 			<Table.Body>
-				<Table.Row>
-					<Table.Cell>
-						<Dumbbell />
-					</Table.Cell>
-					<Table.Cell class="font-medium">Gainage</Table.Cell>
-					<Table.Cell>15s</Table.Cell>
-					<Table.Cell class="text-right">
-						<Button variant="outline" size="icon">
-							<Pencil class="w-4 h-4" />
-						</Button>
-					</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>
-						<PauseCircle />
-					</Table.Cell>
-					<Table.Cell class="font-medium">Pause</Table.Cell>
-					<Table.Cell>30s</Table.Cell>
-					<Table.Cell class="text-right">
-						<Button variant="outline" size="icon">
-							<Pencil class="w-4 h-4" />
-						</Button>
-					</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>
-						<Dumbbell />
-					</Table.Cell>
-					<Table.Cell class="font-medium">Pompes</Table.Cell>
-					<Table.Cell>15s</Table.Cell>
-					<Table.Cell class="text-right">
-						<Button variant="outline" size="icon">
-							<Pencil class="w-4 h-4" />
-						</Button>
-					</Table.Cell>
-				</Table.Row>
+				{#each $workoutConfig as exercise}
+					<Table.Row>
+						<Table.Cell>
+							{#if exercise.type === "exercise"}
+								<Dumbbell />
+							{:else if exercise.type === "rest"}
+								<PauseCircle />
+							{/if}
+						</Table.Cell>
+						<Table.Cell class="font-medium">{exercise.name}</Table.Cell>
+						<Table.Cell>{exercise.time}s</Table.Cell>
+						<Table.Cell class="text-right">
+							{#if !$currentData.playing}
+								<Button variant="outline" size="icon">
+									<Pencil class="w-4 h-4" />
+								</Button>
+							{/if}
+						</Table.Cell>
+					</Table.Row>
+				{/each}
 			</Table.Body>
 		</Table.Root>
 	</Card.Content>
