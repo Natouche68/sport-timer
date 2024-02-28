@@ -17,6 +17,12 @@
 		$workoutConfig[exerciseIndex].time = time;
 		$workoutConfig[exerciseIndex].type = isPause ? "rest" : "exercise";
 	}
+
+	function cancelChanges() {
+		name = $workoutConfig[exerciseIndex].name;
+		time = $workoutConfig[exerciseIndex].time;
+		isPause = $workoutConfig[exerciseIndex].type === "rest";
+	}
 </script>
 
 <Drawer.Content class="container">
@@ -42,7 +48,11 @@
 					Submit
 				</Button>
 			</Drawer.Close>
-			<Drawer.Close>Cancel</Drawer.Close>
+			<Drawer.Close>
+				<Button variant="ghost" class="w-full" on:click={cancelChanges}>
+					Cancel
+				</Button>
+			</Drawer.Close>
 		</Drawer.Footer>
 	</div>
 </Drawer.Content>
