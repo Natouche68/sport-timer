@@ -5,6 +5,8 @@
 	import { Label } from "$lib/components/ui/label";
 	import { Input } from "$lib/components/ui/input";
 	import { Switch } from "$lib/components/ui/switch";
+	import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
+	import MoreHorizontal from "lucide-svelte/icons/more-horizontal";
 
 	export let exerciseIndex: number;
 
@@ -23,12 +25,66 @@
 		time = $workoutConfig[exerciseIndex].time;
 		isPause = $workoutConfig[exerciseIndex].type === "rest";
 	}
+
+	function moveUp() {
+		if (exerciseIndex > 0) {
+			const thisExercise = $workoutConfig[exerciseIndex];
+			const otherExercise = $workoutConfig[exerciseIndex - 1];
+			$workoutConfig[exerciseIndex] = otherExercise;
+			$workoutConfig[exerciseIndex - 1] = thisExercise;
+		}
+	}
+
+	function moveDown() {
+		if (exerciseIndex < $workoutConfig.length - 1) {
+			const thisExercise = $workoutConfig[exerciseIndex];
+			const otherExercise = $workoutConfig[exerciseIndex + 1];
+			$workoutConfig[exerciseIndex] = otherExercise;
+			$workoutConfig[exerciseIndex + 1] = thisExercise;
+		}
+	}
+
+	function deleteExercise() {
+		if ($workoutConfig.length >= 1) {
+			$workoutConfig = $workoutConfig.filter((_, i) => i !== exerciseIndex);
+		}
+	}
 </script>
 
 <Drawer.Content class="container">
 	<div class="w-full md:w-2/3 lg:w-1/2 mx-auto">
 		<Drawer.Header>
-			<Drawer.Title>Edit an exercise</Drawer.Title>
+			<Drawer.Title class="flex justify-between items-center">
+				<div>Edit an exercise</div>
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger>
+						<MoreHorizontal />
+					</DropdownMenu.Trigger>
+					<DropdownMenu.Content>
+						<DropdownMenu.Group>
+							<DropdownMenu.Item
+								disabled={exerciseIndex === 0}
+								on:click={moveUp}
+							>
+								Move up
+							</DropdownMenu.Item>
+							<DropdownMenu.Item
+								disabled={exerciseIndex === $workoutConfig.length - 1}
+								on:click={moveDown}
+							>
+								Move down
+							</DropdownMenu.Item>
+							<DropdownMenu.Item
+								disabled={$workoutConfig.length <= 1}
+								class="text-red-500"
+								on:click={deleteExercise}
+							>
+								Delete
+							</DropdownMenu.Item>
+						</DropdownMenu.Group>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</Drawer.Title>
 		</Drawer.Header>
 		<div class="px-4 my-4 flex flex-col gap-2">
 			<Label for="name">Name</Label>
