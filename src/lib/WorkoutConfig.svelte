@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { currentData, workoutConfig } from "$lib/stores";
 	import EditExercise from "$lib/EditExercise.svelte";
+	import AddExercise from "$lib/AddExercise.svelte";
 	import { Button } from "$lib/components/ui/button";
 	import * as Card from "$lib/components/ui/card";
 	import * as Table from "$lib/components/ui/table";
@@ -11,11 +12,22 @@
 	import Play from "lucide-svelte/icons/play";
 	import Check from "lucide-svelte/icons/check";
 	import Hourglass from "lucide-svelte/icons/hourglass";
+	import Plus from "lucide-svelte/icons/plus";
 </script>
 
 <Card.Root class="md:w-1/3">
 	<Card.Header>
-		<Card.Title tag="h2">My Workout</Card.Title>
+		<Card.Title tag="h2" class="flex justify-between items-center">
+			<div>My Workout</div>
+			<Drawer.Root>
+				<Drawer.Trigger>
+					<Button variant="outline" size="icon">
+						<Plus />
+					</Button>
+				</Drawer.Trigger>
+				<AddExercise />
+			</Drawer.Root>
+		</Card.Title>
 	</Card.Header>
 	<Card.Content>
 		<Table.Root>
