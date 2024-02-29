@@ -17,7 +17,7 @@
 
 <Card.Root class="md:w-1/3 mb-8 md:mb-0 md:mt-16">
 	<Card.Header>
-		<Card.Title tag="h2" class="flex justify-between items-center">
+		<Card.Title tag="h2" class="flex justify-between items-center gap-32">
 			<div>My Workout</div>
 			<Drawer.Root>
 				<Drawer.Trigger>
