@@ -69,10 +69,15 @@
 		/>
 	</svg>
 	<div
-		class="absolute inset-16 md:inset-24 flex flex-col justify-center items-center gap-6"
+		class="absolute inset-16 md:inset-24 flex flex-col justify-center items-center"
 	>
+		{#if $currentData.playing}
+			<div class="text-xl text-muted-foreground">
+				{$workoutConfig[$currentData.currentlyDoing].name}
+			</div>
+		{/if}
 		<div
-			class="text-6xl md:text-8xl font-semibold"
+			class="text-6xl md:text-8xl font-semibold mb-6"
 			class:text-muted-foreground={$workoutConfig.length < 1}
 		>
 			{formatTime(time)}
