@@ -72,6 +72,7 @@
 			variant="secondary"
 			size="icon"
 			class="w-20 h-20 md:w-24 md:h-24"
+			disabled={$workoutConfig.length < 1}
 			on:click={startOrPause}
 		>
 			{#if $currentData.playing}

@@ -6,23 +6,7 @@ type WorkoutConfig = {
 	time: number;
 }[];
 
-export const workoutConfig = writable<WorkoutConfig>([
-	{
-		type: "exercise",
-		name: "Gainage",
-		time: 15,
-	},
-	{
-		type: "rest",
-		name: "Pause",
-		time: 30,
-	},
-	{
-		type: "exercise",
-		name: "Pompes",
-		time: 15,
-	},
-]);
+export const workoutConfig = writable<WorkoutConfig>([]);
 
 type CurrentData = {
 	playing: boolean;
