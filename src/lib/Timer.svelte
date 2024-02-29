@@ -51,7 +51,7 @@
 	}
 </script>
 
-<div class="w-3/4 md:w-1/3 relative">
+<div class="w-3/4 md:w-1/3 my-20 md:my-0 relative">
 	<svg viewBox="0 0 256 256" class="overflow-visible">
 		<circle
 			cx="128"

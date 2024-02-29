@@ -17,7 +17,7 @@
 </script>
 
 <main
-	class="h-dvh flex flex-col md:flex-row justify-around items-center overflow-x-hidden"
+	class="min-h-dvh md:h-screen flex flex-col md:flex-row justify-around items-center overflow-x-hidden"
 >
 	<Timer />
 	<WorkoutConfig />
