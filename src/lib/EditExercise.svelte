@@ -45,9 +45,7 @@
 	}
 
 	function deleteExercise() {
-		if ($workoutConfig.length >= 1) {
-			$workoutConfig = $workoutConfig.filter((_, i) => i !== exerciseIndex);
-		}
+		$workoutConfig = $workoutConfig.filter((_, i) => i !== exerciseIndex);
 	}
 </script>
 
@@ -74,11 +72,7 @@
 							>
 								Move down
 							</DropdownMenu.Item>
-							<DropdownMenu.Item
-								disabled={$workoutConfig.length <= 1}
-								class="text-red-500"
-								on:click={deleteExercise}
-							>
+							<DropdownMenu.Item class="text-red-500" on:click={deleteExercise}>
 								Delete
 							</DropdownMenu.Item>
 						</DropdownMenu.Group>

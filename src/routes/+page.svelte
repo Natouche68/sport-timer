@@ -1,6 +1,19 @@
 <script lang="ts">
+	import { workoutConfig } from "$lib/stores";
 	import Timer from "$lib/Timer.svelte";
 	import WorkoutConfig from "$lib/WorkoutConfig.svelte";
+	import { onMount } from "svelte";
+
+	onMount(() => {
+		const savedConfig = JSON.parse(
+			localStorage.getItem("workoutConfig1") || "[]"
+		);
+		workoutConfig.set(savedConfig);
+
+		workoutConfig.subscribe((config) => {
+			localStorage.setItem("workoutConfig1", JSON.stringify(config));
+		});
+	});
 </script>
 
 <main

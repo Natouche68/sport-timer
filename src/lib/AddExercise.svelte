@@ -19,6 +19,10 @@
 				type: isPause ? "rest" : "exercise",
 			},
 		];
+
+		name = "";
+		time = 30;
+		isPause = false;
 	}
 
 	function cancel() {

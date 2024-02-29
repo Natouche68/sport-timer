@@ -7,11 +7,17 @@
 
 	let time: number = 0;
 	let maxTime: number = 0;
+	$: {
+		if ($workoutConfig.length === 0) {
+			time = 0;
+			maxTime = 0;
+		} else {
+			time = $workoutConfig[$currentData.currentlyDoing].time;
+			maxTime = $workoutConfig[$currentData.currentlyDoing].time;
+		}
+	}
 
 	onMount(() => {
-		time = $workoutConfig[$currentData.currentlyDoing].time;
-		maxTime = $workoutConfig[$currentData.currentlyDoing].time;
-
 		const interval = setInterval(() => {
 			if ($currentData.playing) {
 				time -= 0.01;
@@ -22,8 +28,6 @@
 						$currentData.currentlyDoing = 0;
 						$currentData.playing = false;
 					}
-					time = $workoutConfig[$currentData.currentlyDoing].time;
-					maxTime = $workoutConfig[$currentData.currentlyDoing].time;
 				}
 			}
 		}, 10);
@@ -37,8 +41,6 @@
 		} else {
 			$currentData.playing = false;
 			$currentData.currentlyDoing = 0;
-			time = $workoutConfig[$currentData.currentlyDoing].time;
-			maxTime = $workoutConfig[$currentData.currentlyDoing].time;
 		}
 	}
 
@@ -61,13 +63,20 @@
 			stroke-dasharray="804"
 			stroke-dashoffset={(1 - time / maxTime) * 804}
 			stroke-linecap="round"
-			class="origin-center -rotate-90 text-primary"
+			class="origin-center -rotate-90 {$workoutConfig.length > 0
+				? 'text-primary'
+				: 'text-muted'}"
 		/>
 	</svg>
 	<div
 		class="absolute inset-16 md:inset-24 flex flex-col justify-center items-center gap-6"
 	>
-		<div class="text-6xl md:text-8xl font-semibold">{formatTime(time)}</div>
+		<div
+			class="text-6xl md:text-8xl font-semibold"
+			class:text-muted-foreground={$workoutConfig.length < 1}
+		>
+			{formatTime(time)}
+		</div>
 		<Button
 			variant="secondary"
 			size="icon"
