@@ -9,6 +9,16 @@
 
 <svelte:head>
 	<title>Sport Timer</title>
+	<meta
+		name="theme-color"
+		media="(prefers-color-scheme: light)"
+		content="#ffffff"
+	/>
+	<meta
+		name="theme-color"
+		media="(prefers-color-scheme: dark)"
+		content="#020817"
+	/>
 </svelte:head>
 
 <ModeWatcher />
