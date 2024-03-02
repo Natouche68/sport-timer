@@ -41,7 +41,9 @@
 					? 'text-green-600'
 					: ''}"
 			>
-				<div class="flex flex-row justify-start items-center gap-8 font-medium">
+				<div
+					class="flex flex-row justify-start items-center gap-4 md:gap-12 font-medium"
+				>
 					{#if exercise.type === "exercise"}
 						<Dumbbell class="w-6 h-6" />
 					{:else if exercise.type === "rest"}
@@ -49,8 +51,10 @@
 					{/if}
 					{exercise.name}
 				</div>
-				<div>{exercise.time}s</div>
-				<div class="text-right">
+				<div
+					class="flex flex-row justify-end items-center gap-4 md:gap-16 text-right"
+				>
+					{exercise.time}s
 					{#if $currentData.playing}
 						<Button disabled variant="ghost" size="icon">
 							{#if $currentData.currentlyDoing === i}
