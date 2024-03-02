@@ -8,9 +8,6 @@ const config = {
 		adapter: adapter({
 			regions: ["cdg1"],
 		}),
-		version: {
-			name: "0.1.1",
-		},
 	},
 };
 

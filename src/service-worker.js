@@ -4,10 +4,10 @@
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
 
-import { build, files, version } from "$service-worker";
+import { build, files } from "$service-worker";
 
 // Create a unique cache name for this deployment
-const CACHE = `cache-${version}`;
+const CACHE = "cache";
 
 const ASSETS = [
 	...build, // the app itself
