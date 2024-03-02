@@ -18,7 +18,7 @@
 <Card.Root>
 	<Card.Header>
 		<Card.Title tag="h2" class="flex justify-between items-center gap-32">
-			<div>My Workout</div>
+			<div>My Workout {$currentData.currentConfig}</div>
 			<Drawer.Root>
 				<Drawer.Trigger>
 					<Button variant="outline" size="icon">
