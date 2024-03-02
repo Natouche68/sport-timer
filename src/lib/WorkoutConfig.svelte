@@ -3,8 +3,8 @@
 	import EditExercise from "$lib/EditExercise.svelte";
 	import AddExercise from "$lib/AddExercise.svelte";
 	import { Button } from "$lib/components/ui/button";
+	import { Separator } from "$lib/components/ui/separator";
 	import * as Card from "$lib/components/ui/card";
-	import * as Table from "$lib/components/ui/table";
 	import * as Drawer from "$lib/components/ui/drawer";
 	import Dumbbell from "lucide-svelte/icons/dumbbell";
 	import Pencil from "lucide-svelte/icons/pencil";
@@ -30,50 +30,51 @@
 		</Card.Title>
 	</Card.Header>
 	<Card.Content class="md:max-h-[64vh] overflow-y-auto">
-		<Table.Root>
-			<Table.Body>
-				{#each $workoutConfig as exercise, i}
-					<Table.Row
-						class={$currentData.currentlyDoing === i && $currentData.playing
-							? "text-green-600"
-							: ""}
-					>
-						<Table.Cell>
-							{#if exercise.type === "exercise"}
-								<Dumbbell />
-							{:else if exercise.type === "rest"}
-								<PauseCircle />
+		{#each $workoutConfig as exercise, i}
+			{#if i > 0}
+				<Separator />
+			{/if}
+
+			<div
+				class="flex flex-row justify-between items-center p-3 {$currentData.currentlyDoing ===
+					i && $currentData.playing
+					? 'text-green-600'
+					: ''}"
+			>
+				<div class="flex flex-row justify-start items-center gap-8 font-medium">
+					{#if exercise.type === "exercise"}
+						<Dumbbell class="w-6 h-6" />
+					{:else if exercise.type === "rest"}
+						<PauseCircle class="w-6 h-6" />
+					{/if}
+					{exercise.name}
+				</div>
+				<div>{exercise.time}s</div>
+				<div class="text-right">
+					{#if $currentData.playing}
+						<Button disabled variant="ghost" size="icon">
+							{#if $currentData.currentlyDoing === i}
+								<Play fill="currentColor" />
+							{:else if $currentData.currentlyDoing > i}
+								<Check />
+							{:else if $currentData.currentlyDoing < i}
+								<Hourglass />
 							{/if}
-						</Table.Cell>
-						<Table.Cell class="font-medium">{exercise.name}</Table.Cell>
-						<Table.Cell>{exercise.time}s</Table.Cell>
-						<Table.Cell class="text-right">
-							{#if $currentData.playing}
-								<Button disabled variant="ghost" size="icon">
-									{#if $currentData.currentlyDoing === i}
-										<Play fill="currentColor" />
-									{:else if $currentData.currentlyDoing > i}
-										<Check />
-									{:else if $currentData.currentlyDoing < i}
-										<Hourglass />
-									{/if}
+						</Button>
+					{:else}
+						<Drawer.Root>
+							<Drawer.Trigger>
+								<Button variant="outline" size="icon">
+									<Pencil class="w-4 h-4" />
 								</Button>
-							{:else}
-								<Drawer.Root>
-									<Drawer.Trigger>
-										<Button variant="outline" size="icon">
-											<Pencil class="w-4 h-4" />
-										</Button>
-									</Drawer.Trigger>
-									{#key $workoutConfig}
-										<EditExercise exerciseIndex={i} />
-									{/key}
-								</Drawer.Root>
-							{/if}
-						</Table.Cell>
-					</Table.Row>
-				{/each}
-			</Table.Body>
-		</Table.Root>
+							</Drawer.Trigger>
+							{#key $workoutConfig}
+								<EditExercise exerciseIndex={i} />
+							{/key}
+						</Drawer.Root>
+					{/if}
+				</div>
+			</div>
+		{/each}
 	</Card.Content>
 </Card.Root>
