@@ -15,7 +15,7 @@
 	import Plus from "lucide-svelte/icons/plus";
 </script>
 
-<Card.Root class="mb-8 md:mb-0 md:mt-16">
+<Card.Root>
 	<Card.Header>
 		<Card.Title tag="h2" class="flex justify-between items-center gap-32">
 			<div>My Workout</div>
@@ -29,7 +29,7 @@
 			</Drawer.Root>
 		</Card.Title>
 	</Card.Header>
-	<Card.Content class="md:max-h-[70vh] overflow-y-auto">
+	<Card.Content class="md:max-h-[64vh] overflow-y-auto">
 		<Table.Root>
 			<Table.Body>
 				{#each $workoutConfig as exercise, i}

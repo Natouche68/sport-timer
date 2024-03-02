@@ -62,7 +62,7 @@
 	class="min-h-screen md:h-screen flex flex-col md:flex-row justify-around items-center overflow-x-hidden"
 >
 	<Timer />
-	<Tabs.Root bind:value={$currentTab} class="md:w-1/3">
+	<Tabs.Root bind:value={$currentTab} class="md:w-1/3 mb-8 md:mb-0 md:mt-12">
 		<Tabs.List class="w-full grid grid-cols-3">
 			<Tabs.Trigger value="config-1">Config 1</Tabs.Trigger>
 			<Tabs.Trigger value="config-2">Config 2</Tabs.Trigger>
