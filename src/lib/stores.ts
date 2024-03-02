@@ -11,9 +11,11 @@ export const workoutConfig = writable<WorkoutConfig>([]);
 type CurrentData = {
 	playing: boolean;
 	currentlyDoing: number;
+	currentConfig: number;
 };
 
 export const currentData = writable<CurrentData>({
 	playing: false,
 	currentlyDoing: 0,
+	currentConfig: 1,
 });
