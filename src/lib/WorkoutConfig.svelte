@@ -5,7 +5,7 @@
 	import { Button } from "$lib/components/ui/button";
 	import { Separator } from "$lib/components/ui/separator";
 	import * as Card from "$lib/components/ui/card";
-	import * as Drawer from "$lib/components/ui/drawer";
+	import * as Dialog from "$lib/components/ui/dialog";
 	import Dumbbell from "lucide-svelte/icons/dumbbell";
 	import Pencil from "lucide-svelte/icons/pencil";
 	import PauseCircle from "lucide-svelte/icons/pause-circle";
@@ -13,20 +13,27 @@
 	import Check from "lucide-svelte/icons/check";
 	import Hourglass from "lucide-svelte/icons/hourglass";
 	import Plus from "lucide-svelte/icons/plus";
+
+	let addExerciseOpen = false;
+
+	let areDialogsOpen: boolean[] = [];
+	$workoutConfig.forEach(() => {
+		areDialogsOpen.push(false);
+	});
 </script>
 
 <Card.Root>
 	<Card.Header>
 		<Card.Title tag="h2" class="flex justify-between items-center gap-32">
 			<div>My Workout {$currentData.currentConfig}</div>
-			<Drawer.Root>
-				<Drawer.Trigger>
+			<Dialog.Root bind:open={addExerciseOpen}>
+				<Dialog.Trigger>
 					<Button variant="outline" size="icon">
 						<Plus />
 					</Button>
-				</Drawer.Trigger>
-				<AddExercise />
-			</Drawer.Root>
+				</Dialog.Trigger>
+				<AddExercise bind:isDialogOpen={addExerciseOpen} />
+			</Dialog.Root>
 		</Card.Title>
 	</Card.Header>
 	<Card.Content class="md:max-h-[64vh] overflow-y-auto">
@@ -66,16 +73,19 @@
 							{/if}
 						</Button>
 					{:else}
-						<Drawer.Root>
-							<Drawer.Trigger>
+						<Dialog.Root bind:open={areDialogsOpen[i]}>
+							<Dialog.Trigger>
 								<Button variant="outline" size="icon">
 									<Pencil class="w-4 h-4" />
 								</Button>
-							</Drawer.Trigger>
+							</Dialog.Trigger>
 							{#key $workoutConfig}
-								<EditExercise exerciseIndex={i} />
+								<EditExercise
+									exerciseIndex={i}
+									bind:isDialogOpen={areDialogsOpen[i]}
+								/>
 							{/key}
-						</Drawer.Root>
+						</Dialog.Root>
 					{/if}
 				</div>
 			</div>
