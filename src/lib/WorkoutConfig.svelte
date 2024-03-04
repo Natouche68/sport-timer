@@ -36,7 +36,7 @@
 			</Dialog.Root>
 		</Card.Title>
 	</Card.Header>
-	<Card.Content class="md:max-h-[64vh] overflow-y-auto">
+	<Card.Content class="max-h-[30vh] md:max-h-[64vh] overflow-y-auto">
 		{#each $workoutConfig as exercise, i}
 			{#if i > 0}
 				<Separator />

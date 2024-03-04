@@ -62,7 +62,7 @@
 </script>
 
 <main
-	class="min-h-screen md:h-screen flex flex-col md:flex-row justify-around items-center overflow-x-hidden"
+	class="h-screen flex flex-col md:flex-row justify-around items-center overflow-hidden"
 >
 	<Timer />
 	<Tabs.Root bind:value={$currentTab} class="md:w-1/3 mb-8 md:mb-0 md:mt-12">
