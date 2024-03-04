@@ -14,7 +14,7 @@
 <ModeWatcher />
 
 <header
-	class="fixed top-0 left-0 right-0 flex flex-col justify-center items-center z-10 backdrop-blur-md"
+	class="fixed top-0 left-0 right-0 flex flex-col justify-center items-center z-10 bg-background"
 >
 	<div class="my-3 w-full text-center relative">
 		<h1 class="text-2xl font-bold">Sport Timer</h1>
