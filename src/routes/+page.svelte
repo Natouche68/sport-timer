@@ -31,6 +31,7 @@
 
 			switch (tab) {
 				case "config-1":
+					$currentData.playing = false;
 					$currentData.currentConfig = 1;
 					savedConfig = JSON.parse(
 						localStorage.getItem("workoutConfig1") || "[]"
@@ -39,6 +40,7 @@
 					break;
 
 				case "config-2":
+					$currentData.playing = false;
 					$currentData.currentConfig = 2;
 					savedConfig = JSON.parse(
 						localStorage.getItem("workoutConfig2") || "[]"
@@ -47,6 +49,7 @@
 					break;
 
 				case "config-3":
+					$currentData.playing = false;
 					$currentData.currentConfig = 3;
 					savedConfig = JSON.parse(
 						localStorage.getItem("workoutConfig3") || "[]"
