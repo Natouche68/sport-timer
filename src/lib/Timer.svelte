@@ -7,6 +7,7 @@
 
 	let time: number = 0;
 	let maxTime: number = 0;
+	let bip: HTMLAudioElement;
 	$: {
 		if ($workoutConfig.length === 0) {
 			time = 0;
@@ -18,6 +19,8 @@
 	}
 
 	onMount(() => {
+		bip = new Audio("/bip.mp3");
+
 		const interval = setInterval(() => {
 			if ($currentData.playing) {
 				time -= 0.01;
@@ -28,6 +31,7 @@
 						$currentData.currentlyDoing = 0;
 						$currentData.playing = false;
 					}
+					bip.play();
 				}
 			}
 		}, 10);
@@ -38,6 +42,7 @@
 	function startOrPause() {
 		if (!$currentData.playing) {
 			$currentData.playing = true;
+			bip.play();
 		} else {
 			$currentData.playing = false;
 			$currentData.currentlyDoing = 0;
